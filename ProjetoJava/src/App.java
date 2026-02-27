@@ -21,9 +21,9 @@ public class App {
         Scanner scanIn = new Scanner(System.in);
         int money = 0, value = 0, choice = 0;
         while (choice != -99){
-            //System.out.println("[1] Check Money\n[2] Deposite Money\n[3] Withdraw Money\n[-99] Leave ");
             System.out.println("--------------------\n[1] Check Money    |\n[2] Deposite Money |\n[3] Withdraw Money |\n[-99] Leave        | \n--------------------");
             choice = Integer.parseInt(scanIn.nextLine());
+            // Verify Input 
             if (choice == 1){
                 Check(money);
             } else if (choice == 2){
