@@ -7,36 +7,56 @@ public class App {
     }
     
     public static int Add(int money, int value){
+        clearConsole();
         System.out.println("New ammount: " + (money + value) + '$');
         return money + value;
     }
     
     public static int Withdraw(int money, int value){
+        clearConsole();
         System.out.println("New ammount: " + (money - value) + '$');
         return money - value;
     }
 
     
+    public static void clearConsole() {
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
+        }
+    }
+
     public static void main(String[] args) throws Exception {
         Scanner scanIn = new Scanner(System.in);
         int money = 0, value = 0, choice = 0;
         while (choice != -99){
             System.out.println("--------------------\n[1] Check Money    |\n[2] Deposite Money |\n[3] Withdraw Money |\n[-99] Leave        | \n--------------------");
-            choice = Integer.parseInt(scanIn.nextLine());
-            // Verify Input 
+            while(!scanIn.hasNextInt()){
+                    scanIn.next();
+                    System.out.println("Please Enter a valid number");
+                }
+            choice = scanIn.nextInt();
             if (choice == 1){
                 Check(money);
             } else if (choice == 2){
                 System.out.println("How much do you want to deposite?");
-                value = Integer.parseInt(scanIn.nextLine());
+                while(!scanIn.hasNextInt()){
+                    scanIn.next();
+                    System.out.println("Please Enter a valid number");
+                }
+                value = (scanIn.nextInt());
                 money = Add(money, value);
             } else if (choice == 3){
                 System.out.println("How much do you want to withdraw?");
-                value = Integer.parseInt(scanIn.nextLine());
+                while(!scanIn.hasNextInt()){
+                    scanIn.next();
+                    System.out.println("Please Enter a valid number");
+                }
+                value = scanIn.nextInt();
                 if (value <= money){
                     money = Withdraw(money, value);
                 } else {
-                    System.out.println("The value you entered is bigger than the one in your account (lowkey poor aahh nigga)");
+                    clearConsole();
+                    System.out.println("The value you entered is bigger than the one in your account");
                 }
                 
             } else if (choice == -99){
